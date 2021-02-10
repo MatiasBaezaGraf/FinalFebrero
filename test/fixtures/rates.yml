@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  price: 1
+  from: 2021-02-10 18:00:50
+  to: 2021-02-10 18:00:50
+
+two:
+  price: 1
+  from: 2021-02-10 18:00:50
+  to: 2021-02-10 18:00:50

@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Payments</h1>
+
+<form action="/payments" method="GET">
+      
+       FROM: <input type="date" name="from" placeholder="From" value="<%= @from %>"/>
+
+       TO :<input type="date" name="to" placeholder="To" value="<%= @to %>"/>
+
+      <input type="submit", value="Filter by date" />
+
+    </form>
+
+<table>
+  <thead>
+    <tr>
+      <th>Cabin</th>
+      <th>Roll</th>
+      <th>Required ammount</th>
+      <th>Real ammount</th>
+      <th>Date</th>
+      <th>Total</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @payments.each do |payment| %>
+      <tr>
+        <td><%= payment.cabin.number %></td>
+        <td><%= payment.roll.name %></td>
+        <td><%= payment.roll.actual_price %></td>
+        <td><%= payment.real_ammount %></td>
+        <td><%= payment.date %></td>
+        <td><%= payment.total_ammount %></td>
+        <% if current_user.role == "cajero" %> 
+          <td><%= link_to 'Show', payment %></td>
+          <td><%= link_to 'Edit', edit_payment_path(payment) %></td>
+          <td><%= link_to 'Destroy', payment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<br>
+
+  <%= link_to 'New Payment', new_payment_path %>
+

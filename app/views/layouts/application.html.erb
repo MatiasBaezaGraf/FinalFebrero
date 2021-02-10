@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Peaje</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    | <%= link_to 'Payments', payments_path, class: "back-but"%> |
+    <%= link_to 'Vehicles', vehicles_path, class: "back-but"%> |
+    <%= link_to 'Cabins', cabins_path, class: "back-but"%> |
+    <%= link_to 'Rolls', rolls_path, class: "back-but"%> |
+    <%= link_to 'Rates', rates_path, class: "back-but"%> |
+    <% if current_user %>
+      <%= link_to "Log out►", destroy_user_session_path, method: :delete, class: "logout" %> |
+    <% else %>
+      <%= link_to "Log in►", new_user_session_path, class: "loginb" %> |
+      <%= link_to "Sign up►", new_user_registration_path, class: "loginb" %> |
+    <% end %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
